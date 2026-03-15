@@ -375,6 +375,7 @@ impl SetDisks {
                                             till_offset,
                                             erasure.shard_size(),
                                             checksum_algo.clone(),
+                                            false,
                                         )
                                         .await
                                         {
@@ -680,6 +681,7 @@ impl SetDisks {
         Ok((result, None))
     }
 
+    #[tracing::instrument(skip(self))]
     pub(super) async fn heal_object_dir(
         &self,
         bucket: &str,

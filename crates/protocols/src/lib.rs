@@ -20,8 +20,20 @@ pub mod constants;
 #[cfg(feature = "ftps")]
 pub mod ftps;
 
+#[cfg(feature = "swift")]
+pub mod swift;
+
+#[cfg(feature = "webdav")]
+pub mod webdav;
+
 pub use common::session::Protocol;
 pub use common::{AuthorizationError, ProtocolPrincipal, S3Action, SessionContext, authorize_operation};
 
 #[cfg(feature = "ftps")]
 pub use ftps::{config::FtpsConfig, server::FtpsServer};
+
+#[cfg(feature = "swift")]
+pub use swift::handler::SwiftService;
+
+#[cfg(feature = "webdav")]
+pub use webdav::{config::WebDavConfig, server::WebDavServer};
